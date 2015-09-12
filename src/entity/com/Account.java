@@ -22,13 +22,13 @@ public class Account
 		this.accountNumber = 0;
 		this.balance = -1D;
 	}
-	Account(Account accountDetail)
+	/*Constructor to perform deep copy*/
+	public Account(Account accountDetail)
 	{
-		Account newAccount = new Account();
-		newAccount.accountNumber = accountDetail.getAccountNumber();
-		newAccount.balance = new Double(accountDetail.getBalance());
-		newAccount.expirationDate = new Date(accountDetail.getExpirationDate().getTime()); 
-		newAccount.holderName = new String(accountDetail.getHolderName());
+		this.accountNumber = accountDetail.getAccountNumber();
+		this.balance = new Double(accountDetail.getBalance());
+		this.expirationDate = new Date(accountDetail.getExpirationDate().getTime()); 
+		this.holderName = new String(accountDetail.getHolderName());		
 	}
 	public String getHolderName() {
 		return holderName; 

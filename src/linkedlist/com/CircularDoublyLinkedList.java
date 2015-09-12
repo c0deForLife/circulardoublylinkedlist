@@ -1,27 +1,40 @@
 package src.linkedlist.com;
 
-import java.util.Date;
-
-import src.entity.com.Account;
 import src.exceptions.com.InvalidIndexValue;
-/* Circular Doubly Linked List */
 import src.exceptions.com.InvalidNodeValue;
 import src.exceptions.com.NegativeIndexValue;
 
 
+/* Circular Doubly Linked List */
 
 public class CircularDoublyLinkedList 
 {
 	Node head;
 	Node tail;
-	private int sizeOfList = 0;
+	private int sizeOfList;
 	public CircularDoublyLinkedList()
 	{
 		head = tail = null;
+		sizeOfList = 0;
 	}
 	CircularDoublyLinkedList(CircularDoublyLinkedList dll)
 	{
-		/* Code to perform deep copy such that this = dll */
+		if(head != null && tail != null)
+		{
+			Node newHead = new Node(head);
+			Node currNode = head;
+			Node currNewNode = newHead;
+			System.out.println("Following are elements in the doubly linked list");
+			while(currNode != null)
+			{
+				currNewNode.next = new Node(currNode.next);
+				currNewNode.prev = new Node(currNode.prev);
+				currNode d= currNode.next;
+				currNewNode = currNewNode.next;
+				if(currNode == head)
+					break;
+			}
+		}
 	}
 	public boolean insertAtLast(Node newNode) throws InvalidNodeValue
 	{
@@ -89,6 +102,41 @@ public class CircularDoublyLinkedList
 		}
 		sizeOfList += 1;
 		return true;
+	}
+	public Node deleteAtFirst() throws NegativeIndexValue, InvalidIndexValue
+	{
+		Node nodeDeleted = deleteAtIndex(1);
+		return nodeDeleted;	
+	}
+	public Node deleteAtLast() throws NegativeIndexValue, InvalidIndexValue
+	{
+		Node nodeDeleted = deleteAtIndex(this.sizeOfList);
+		return nodeDeleted;
+	}
+	public Node deleteAtIndex(int index) throws NegativeIndexValue, InvalidIndexValue
+	{
+		Node nodeToDel = null;
+		if(head != null && tail != null)
+		{
+			if(index <= 0)
+				throw new NegativeIndexValue();
+			else if(index > sizeOfList )
+				throw new InvalidIndexValue(sizeOfList);
+			nodeToDel = getNodeAtIndex(index);
+			Node nextNode = nodeToDel.next;
+			Node prevNode = nodeToDel.prev;
+			prevNode.next = nextNode;
+			nextNode.prev = prevNode;
+			if(index == 1)
+				head = nextNode;
+			else if(index == sizeOfList)
+				tail = prevNode;
+			/* So that the client is unable to access any of the next or previous nodes using this node*/
+			nodeToDel.next = null;
+			nodeToDel.prev = null;
+			sizeOfList -= 1;
+		}
+		return nodeToDel;
 	}
 	public Node getNodeAtIndex(int index)
 	{

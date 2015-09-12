@@ -13,6 +13,13 @@ public class Node
 		next = null;
 		prev = null;
 	}
+	/* Constructor to perform deep copy*/
+	public Node(Node newNode)
+	{
+		accountNode = new Account(newNode.accountNode);
+		this.next = null;
+		this.prev = null;
+	}
 	public Account getAccountNode()
 	{
 		return accountNode;

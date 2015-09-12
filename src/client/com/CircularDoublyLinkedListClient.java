@@ -33,31 +33,41 @@ public class CircularDoublyLinkedListClient {
 		Node n6 = new Node(acc5);
 		Node n7 = new Node(acc6);
 		Node n8 = new Node(acc7);
-		
+		/*
 		CircularDoublyLinkedList dll = new CircularDoublyLinkedList();
 		dll.display();
 		//dll.displayReverse();
 		dll.insertAtLast(n1);
-		dll.display();
+		//dll.display();
 		//dll.displayReverse();
 		dll.insertAtLast(n2);
 		//dll.displayReverse();
-		dll.display();
+		//dll.display();
 		dll.insertAtLast(n3);
-		dll.display();
+		//dll.display();
 		dll.insertAtLast(n4);
-		dll.display();
+	//	dll.display();
 		dll.insertAtLast(n5);
-		dll.display();
-		dll.displayReverse();
-		System.out.println("Index = "+dll.getIndexOf(n4));
-		System.out.println("Holder name at 3 = "+dll.getNodeAtIndex(3).getAccountNode().getHolderName());
+		//dll.display();
+		//dll.displayReverse();
+		//System.out.println("Index = "+dll.getIndexOf(n4));
+		//System.out.println("Holder name at 3 = "+dll.getNodeAtIndex(3).getAccountNode().getHolderName());
 		dll.insertAtIndex(n6,3);
 		//dll.display();
 		dll.insertAtIndex(n7,1);
 		//dll.display();
 		dll.insertAtIndex(n8,1);
 		dll.display();
+		System.out.println("Size = "+dll.size());
+		dll.deleteAtIndex(5);
+		dll.display();
+		System.out.println("Size = "+dll.size());*/
+		Node n = new Node(n1);
+		Account accN = new Account(acc);		
+		accN.setBalance(85236d);
+		
+		System.out.println("Acc = "+n1.getAccountNode().getBalance());
+		System.out.println("Acc = "+accN.getBalance());
 	}
 	
 
